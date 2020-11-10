@@ -1,0 +1,27 @@
+{
+  "hosting": {
+    "predeploy": [
+      "npm --prefix webapp run build"
+    ],
+    "public": "webapp/build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/server-time",
+        "function": "serverTime"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  }
+}
